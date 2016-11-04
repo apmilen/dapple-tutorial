@@ -2,6 +2,8 @@ pragma solidity ^0.4.2;
 
 import "dapple/script.sol";
 
+import 'ds-auth/basic_authority.sol';
+
 import 'ds-token/data/balance_db.sol';
 import 'ds-token/data/approval_db.sol';
 import 'ds-token/frontend.sol';
