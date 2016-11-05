@@ -31,27 +31,36 @@ contract DeploymentScript is Script {
         frontend.setAuthority(authority);
 
         // The only data ops the controller does is `move` balances and `set` approvals.
-        authority.setCanCall( controller, balance_db,
-                             bytes4(sha3("moveBalance(address,address,uint256)")), true );
-        authority.setCanCall( controller, approval_db,
-                             bytes4(sha3("setApproval(address,address,uint256)")), true );
+        authority.setCanCall( controller, balance_db, bytes4(sha3(
+            "moveBalance(address,address,uint256)")), true );
+        authority.setCanCall( controller, approval_db, bytes4(sha3(
+            "setApproval(address,address,uint256)")), true );
 
         // The controller calls back to the frontend for the 2 events.
-        authority.setCanCall( controller, frontend,
-                             bytes4(sha3("emitTransfer(address,address,uint256)")), true );
-        authority.setCanCall( controller, frontend,
-                             bytes4(sha3("emitApproval(address,address,uint256)")), true );
+        authority.setCanCall( controller, frontend, bytes4(sha3(
+            "emitTransfer(address,address,uint256)")), true );
+        authority.setCanCall( controller, frontend, bytes4(sha3(
+            "emitApproval(address,address,uint256)")), true );
 
         // The frontend can call the proxy functions.
-        authority.setCanCall( frontend, controller,
-                             bytes4(sha3("transfer(address,address,uint256)")), true );
-        authority.setCanCall( frontend, controller,
-                             bytes4(sha3("transferFrom(address,address,address,uint256)")),
-                             true );
+        authority.setCanCall( frontend, controller, bytes4(sha3(
+            "transfer(address,address,uint256)")), true );
+        authority.setCanCall( frontend, controller, bytes4(sha3(
+            "transferFrom(address,address,address,uint256)")), true );
+        authority.setCanCall( frontend, controller, bytes4(sha3(
+            "approve(address,address,uint256)")), true );
 
-        authority.setCanCall( frontend, controller,
-                             bytes4(sha3("approve(address,address,uint256)")), true );
+        // Granting authorization to my metamask account
+        // for frontend testing
+        authority.setCanCall( 
+            address(0xC4963E94d919651857C4e11e3424E0554e827F7E), controller, 
+            bytes4(sha3("setAccountTransferPermission(address,bool)")), true );
 
-        
+        // export objects to the local environment
+        exportObject("approval_db", approval_db);
+        exportObject("balance_db", balance_db);
+        exportObject("frontend", frontend);
+        exportObject("controller", controller);
+
     }
 }

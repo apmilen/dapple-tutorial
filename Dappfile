@@ -7,3 +7,27 @@ layout:
 dependencies: {}
 ignore: []
 name: dapple-tutorial
+dapple_version: 0.8.24
+environments:
+  develop:
+    objects: {}
+    type: internal
+  morden:
+    objects:
+      approval_db:
+        value: '0x1cfe2dc0afedefb5d13db2c253092dc998bfbf7e'
+        type: >-
+          DSApprovalDB[6b51a424bb7630a21a3c221837f81de5938655565b7332a58e1d9c41305cfb49]
+      balance_db:
+        value: '0x7241c0c7c2608048165781501b6a925d709c77ca'
+        type: >-
+          DSBalanceDB[82b107199bd9aebd6c0c1cd94bd11af69aed8637ea3b1992fd107ca201825390]
+      frontend:
+        value: '0x19c623bef0aa83849b5661f77db3aa02c21093e1'
+        type: >-
+          DSTokenFrontend[b524d7ea1a8e432671cb0e8a7ee2ecab9ca2ef42df85c9a1231fcc3453ed9cc7]
+      controller:
+        value: '0xfc2c6ed88ea1852ff50f3b22e569538be243f3c0'
+        type: >-
+          MyTokenController[6be931bc6930ac267b95d7c4f78c863e96f0fdb3e48e2c3096d0454cc3391554]
+    type: MORDEN
