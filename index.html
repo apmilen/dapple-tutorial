@@ -1,7 +1,7 @@
 <!doctype html>
 
-<html lang="en">  
-<head>  
+<html lang="en">
+<head>
     <meta charset="utf-8">
 
     <title>Dapple test</title>
@@ -10,31 +10,47 @@
 
     <script>
         window.addEventListener('load', function() {
+            // The environments object holds data
+            // exported from the Dappfile
             var env = dapple["dapple-tutorial"].environments.morden
+            
+            // Instantiating the dapple_tutorial
+            // member turns the values in its Dappfile
+            // into high-level API objects
             var dapple_tutorial = 
                 new dapple["dapple-tutorial"].class(web3, env)
             MyTokenController = 
                 dapple_tutorial.objects.controller;
         })
-
+        
         function setAccountTransferPermission(value) {
             var address = document.getElementById(
                 "address-input").value
+
+            // sendTransaction() isn't strictly
+            // necessary here, but its added for clarity
             MyTokenController
-                .setAccountTransferPermission(
+                .setAccountTransferPermission
+                .sendTransaction(
                     address, value, console.log);
         }
 
         function getAccountTransferPermission() {
             var address = 
                 document.getElementById("address-input").value
+
+            // call() is used here to read the chain
+            // without creating a transaction
             MyTokenController
                 .getAccountTransferPermission
-                .call(address, console.log);
+                .call(address, function (error, result) {
+                    document.getElementById(
+                        "permission-output").innerHTML = result;
+                });
         }
     </script>  
-</head>  
-<body>  
+</head>
+<body>
     <input placeholder="address" type="text" id="address-input">
     <button onClick="setAccountTransferPermission(true)">
         Approve for Transfers</button>
@@ -44,5 +60,6 @@
     <button onClick="getAccountTransferPermission()">
         Get Transfer Permission
     </button>
-</body>  
+    <div id="permission-output"></div>
+</body>
 </html>
