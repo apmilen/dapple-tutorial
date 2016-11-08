@@ -21,7 +21,7 @@
 
         function getAccountTransferPermission() {
             var address = document.getElementById("address-input").value
-            dapple_tutorial.objects.controller.getAccountTransferPermission(address, console.log);
+            dapple_tutorial.objects.controller.getAccountTransferPermission.call(address, console.log);
         }
     </script>
     
