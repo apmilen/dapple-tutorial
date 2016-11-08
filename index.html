@@ -1,7 +1,7 @@
 <!doctype html>
 
-<html lang="en">
-<head>
+<html lang="en">  
+<head>  
     <meta charset="utf-8">
 
     <title>Dapple test</title>
@@ -11,25 +11,38 @@
     <script>
         window.addEventListener('load', function() {
             var env = dapple["dapple-tutorial"].environments.morden
-            dapple_tutorial = new dapple["dapple-tutorial"].class(web3, env)
+            var dapple_tutorial = 
+                new dapple["dapple-tutorial"].class(web3, env)
+            MyTokenController = 
+                dapple_tutorial.objects.controller;
         })
-        
+
         function setAccountTransferPermission(value) {
-            var address = document.getElementById("address-input").value
-            dapple_tutorial.objects.controller.setAccountTransferPermission(address, value, console.log);
+            var address = document.getElementById(
+                "address-input").value
+            MyTokenController
+                .setAccountTransferPermission(
+                    address, value, console.log);
         }
 
         function getAccountTransferPermission() {
-            var address = document.getElementById("address-input").value
-            dapple_tutorial.objects.controller.getAccountTransferPermission.call(address, console.log);
+            var address = 
+                document.getElementById("address-input").value
+            MyTokenController
+                .getAccountTransferPermission
+                .call(address, console.log);
         }
-    </script>
-    
-</head>
-<body>
-        <input placeholder="address" type="text" id="address-input">
-        <button onClick="setAccountTransferPermission(true)">Approve for Transfers</button>
-        <button onClick="setAccountTransferPermission(false)">Revoke Transfer Permission</button>
-        <button onClick="getAccountTransferPermission()">Get Transfer Permission</button>
-</body>
+    </script>  
+</head>  
+<body>  
+    <input placeholder="address" type="text" id="address-input">
+    <button onClick="setAccountTransferPermission(true)">
+        Approve for Transfers</button>
+    <button onClick="setAccountTransferPermission(false)">
+        Revoke Transfer Permission
+    </button>
+    <button onClick="getAccountTransferPermission()">
+        Get Transfer Permission
+    </button>
+</body>  
 </html>
