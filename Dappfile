@@ -15,19 +15,19 @@ environments:
   morden:
     objects:
       approval_db:
-        value: '0x1cfe2dc0afedefb5d13db2c253092dc998bfbf7e'
+        value: '0x90e80961fe7790c194126c26878484813db82b99'
         type: >-
           DSApprovalDB[6b51a424bb7630a21a3c221837f81de5938655565b7332a58e1d9c41305cfb49]
       balance_db:
-        value: '0x7241c0c7c2608048165781501b6a925d709c77ca'
+        value: '0x7360842d5f7721757189a57781bdf886685e1fc2'
         type: >-
           DSBalanceDB[82b107199bd9aebd6c0c1cd94bd11af69aed8637ea3b1992fd107ca201825390]
       frontend:
-        value: '0x19c623bef0aa83849b5661f77db3aa02c21093e1'
+        value: '0x01d4af3f5f9e3d5a60c07668b2cf7fe8d27c8262'
         type: >-
           DSTokenFrontend[b524d7ea1a8e432671cb0e8a7ee2ecab9ca2ef42df85c9a1231fcc3453ed9cc7]
       controller:
-        value: '0xfc2c6ed88ea1852ff50f3b22e569538be243f3c0'
+        value: '0xa9e88adef0c75a336071116cf0d20c603e09b90d'
         type: >-
           MyTokenController[6be931bc6930ac267b95d7c4f78c863e96f0fdb3e48e2c3096d0454cc3391554]
     type: MORDEN
